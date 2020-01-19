@@ -1,6 +1,6 @@
 const getConfig = () => {
   const config = {
-    baseUrl: 'http://sicop.homologacao.am.gov.br/diario-obras-mobile/',
+    baseUrl: 'http://localhost:3002/api',
   };
 
   return {

@@ -1,5 +1,7 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
-const reducers = () => {};
+import posts from 'pages/Posts/store/reducer';
+
+const reducers = () => combineReducers({ posts });
 
 export default reducers;
