@@ -21,14 +21,8 @@ const Header = ({ title, home, navigation }) => (
             style={{ color: colors.black, paddingRight: metrics.baseMargin }}
           />
         </TouchableOpacity>
-        <Title numberOfLines={1} >
-          {title}
-        </Title>
-        {/* <Icon
-              name="search"
-              size={20}
-              style={{ color: colors.white }}
-            /> */}
+        <Title numberOfLines={1}>{title}</Title>
+        <Icon name="search" size={20} style={{ color: colors.black }} />
       </ContentHome>
     ) : (
       <Content>
@@ -38,7 +32,7 @@ const Header = ({ title, home, navigation }) => (
           <Icon
             name="arrow-back"
             size={25}
-            style={{ color: colors.white, paddingRight: metrics.baseMargin }}
+            style={{ color: colors.black, paddingRight: metrics.baseMargin }}
           />
         </TouchableOpacity>
         <Title numberOfLines={1}>{title}</Title>
@@ -51,13 +45,11 @@ Header.defaultProps = {
   title: '',
   home: false,
   navigation: {},
-  isDark: false,
 };
 
 Header.propTypes = {
   title: PropTypes.string,
   home: PropTypes.bool,
-  isDark: PropTypes.bool,
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
     goBack: PropTypes.func,

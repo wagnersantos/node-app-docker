@@ -1,8 +1,9 @@
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 import Welcome from 'pages/Welcome';
 import Posts from 'pages/Posts';
+import PostRegister from 'pages/Posts/PostRegister';
 
 const AppNavigator = createStackNavigator(
   {
@@ -11,6 +12,9 @@ const AppNavigator = createStackNavigator(
     },
     Posts: {
       screen: Posts,
+    },
+    PostRegister: {
+      screen: PostRegister,
     },
   },
   {
