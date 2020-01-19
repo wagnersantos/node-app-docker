@@ -10,7 +10,8 @@ export default {
   primary: '#7a91ca',
   secundary: '#444a5a',
   sucess: '#9dca83',
-  danger: '#e37a7a',
+  error: '#e37a7a',
+  disabled: 'rgba(255,255,255,0.4)',
 
   transparent: 'transparent',
   darkTransparent: 'rgba(0,0,0,0.6)',
