@@ -4,14 +4,12 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  StatusBar,
   AsyncStorage,
   ActivityIndicator,
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-// import AsyncStorage from '@react-native-community/async-storage';
-
+import {Input} from 'components';
 import styles from './styles';
 
 class Welcome extends Component {
@@ -52,20 +50,21 @@ class Welcome extends Component {
     const {username, loading, error} = this.state;
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="light-content" />
         <Text style={styles.title}>Bem-vindo</Text>
         <Text style={styles.subtitle}>Informe seu usuário no gitHub</Text>
 
         {error && <Text style={styles.error}>Usuário inexistente</Text>}
 
         <View style={styles.form}>
-          <TextInput
-            style={styles.input}
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholder="Digite seu usuário"
-            underlineColorAndroid="transparent"
+          <Input
+            search
+            label="Pesquisar posts"
+            placeholder="Digite..."
+            // onChangeText={text => setUsername(text)}
             value={username}
+            returnKeyType="go"
+            autoCorrect={false}
+            autoCapitalize="none"
             onChangeText={text => this.setState({username: text})}
           />
           <TouchableOpacity style={styles.button} onPress={this.sigIn}>

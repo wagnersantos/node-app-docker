@@ -1,7 +1,7 @@
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
-import Welcome from 'pages/Welcome/Welcome';
+import Welcome from 'pages/Welcome';
 
 const AppNavigator = createStackNavigator({
   Home: {
