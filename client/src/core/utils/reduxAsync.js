@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
-export const createType = (stateKey, type) => `diario-obras/${stateKey}/${type}`;
+export const createType = (stateKey, type) => `client/${stateKey}/${type}`;
 
 export const createAsyncTypes = (stateKey, type) => ({
   REQUEST: `${createType(stateKey, type)}_REQUEST`,

@@ -21,11 +21,10 @@ export const ContainerKeyboardAvoid = styled.KeyboardAvoidingView`
 
 export const Item = styled.View`
   align-items: center;
-  background-color: ${colors.white};
+  background-color: ${colors.light};
   flex-direction: row;
   height: 49px;
-  border-bottom-color: ${colors.black};
-  border-bottom-width: 1px;
+  padding: 10px;
 `;
 
 export const TextArea = styled.TextInput`
@@ -44,5 +43,5 @@ export const TextArea = styled.TextInput`
 
 export const Actions = styled.View`
   margin-top: ${metrics.baseMargin}px;
-  margin-bottom: ${metrics.baseMargin}px;
+  margin-bottom: ${metrics.baseMargin * 3}px;
 `;

@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 import { types } from './actions';
 
 export const initialState = {
-  posts: {},
+  posts: [],
   loaders: {
     postsList: true,
   },
@@ -18,11 +18,15 @@ export default handleActions(
       ...state,
       posts: payload,
     }),
+    [types.SET_POST.SUCCESS]: (state, { payload }) => ({
+      ...state,
+      posts: payload,
+    }),
   },
   initialState,
 );
 
 export const selectors = {
   getLoaders: state => state.posts.loaders,
-  getposts: state => state.posts.posts,
+  getPosts: state => state.posts.posts,
 };

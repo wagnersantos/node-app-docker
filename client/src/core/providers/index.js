@@ -1,34 +1,28 @@
 import axios from 'axios';
-import DiaryProvider from './diary';
-import LoginProvider from './login';
 
-export const Providers = ({
-  action, path, method, params, responseType, timeout = 10000,
-}) => {
-  const abort = axios.CancelToken.source();
-  const cancelTimeOut = setTimeout(
-    () => abort.cancel(),
-    timeout,
-  );
+import Api from './api';
 
-  const variables = {
+export default {
+  service: ({
+    params,
     path,
     method,
-    params,
     responseType,
-    cancelToken: abort.token,
-  };
-
-  return ({
-    SEND_ACTION: () => DiaryProvider.service(variables)
-      .then((response) => {
-        clearTimeout(cancelTimeOut);
-        return response;
-      }),
-    LOGIN: () => LoginProvider.service(variables)
-      .then((response) => {
-        clearTimeout(cancelTimeOut);
-        return response;
-      }),
-  }[action]);
+    headers,
+    timeout = 10000,
+  }) => {
+    const abort = axios.CancelToken.source();
+    const cancelTimeOut = setTimeout(() => abort.cancel(), timeout);
+    
+    return Api.request(path, {
+      method,
+      data: params,
+      responseType,
+      cancelToken: abort.token,
+      headers,
+    }).then(response => {
+      clearTimeout(cancelTimeOut);
+      return response;
+    });
+  },
 };

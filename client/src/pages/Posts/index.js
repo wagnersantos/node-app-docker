@@ -2,13 +2,28 @@ import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { withNavigation } from 'react-navigation';
-import { TouchableHighlight } from 'react-native';
+import { Text } from 'react-native';
 
+import { selectors } from './store/reducer';
+import { actions } from './store/actions';
+
+import { Header, Button, List, Spinner } from 'components';
 import { colors } from 'core/assets/styles';
-import { Header, Text, Button, List, Spinner } from 'components';
 import { Container, Item, Actions } from './styled';
 
 const Posts = ({ navigation }) => {
+  const posts = useSelector(state => selectors.getPosts(state));
+  const loaders = useSelector(state => selectors.getLoaders(state));
+
+  const dispatch = useDispatch();
+  const getPosts = () => dispatch(actions.fetchPosts.request());
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  const onRefresh = () => getPost();
+
   const renderItem = useCallback(item => (
     <Item>
       <Text numberOfLines={1}>{item.post}</Text>
@@ -18,8 +33,9 @@ const Posts = ({ navigation }) => {
   const renderList = useCallback(
     item => (
       <List
-        // keyExtractor={item => item.id}
-        data={item.post}
+        // onRefresh={onRefresh}
+        keyExtractor={item => String(item.id)}
+        data={item}
         renderItem={renderItem}
       />
     ),
@@ -30,14 +46,18 @@ const Posts = ({ navigation }) => {
     <>
       <Header title="Listar posts" home />
       <Container>
-        {/* <Spinner visible={loaders} color={colors.white} /> */}
-        {/* {posts && renderList(posts)} */}
         <Actions>
           <Button
             label="incluir post"
             onPress={() => navigation.navigate('PostRegister')}
           />
         </Actions>
+
+       {
+        loaders.postsList ? 
+        <Spinner visible color={colors.white} />
+          : renderList(posts)
+      }
       </Container>
     </>
   );
