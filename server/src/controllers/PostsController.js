@@ -2,7 +2,7 @@ import {
   getPostsDB,
   addPostDB,
   getVotesDB,
-  addVoteDB
+  updatePostDB
 } from "../models/PostsModels";
 
 export const getPosts = (req, res) => {
@@ -37,15 +37,15 @@ export const getVotes = (req, res) => {
   });
 };
 
-export const addVote = (req, res) => {
-  const { upvote, idpost } = req.body;
-  addVoteDB({
-    data: { upvote, idpost },
+export const updatePost = (req, res) => {
+  const { upvote, id } = req.body;
+  updatePostDB({
+    data: { upvote, id },
     cb: error => {
       if (error) {
         throw error;
       }
-      res.status(201).json({ status: "success", message: "vote added." });
+      res.status(201).json({ status: "success", message: "update post." });
     }
   });
 };

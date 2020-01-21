@@ -25,6 +25,7 @@ export const Item = styled.View`
   flex-direction: row;
   height: 49px;
   padding: 10px;
+  justify-content: space-between;
 `;
 
 export const TextArea = styled.TextInput`
@@ -44,4 +45,8 @@ export const TextArea = styled.TextInput`
 export const Actions = styled.View`
   margin-top: ${metrics.baseMargin}px;
   margin-bottom: ${metrics.baseMargin * 3}px;
+`;
+
+export const ContainerText = styled.View`
+  align-self: flex-start;
 `;

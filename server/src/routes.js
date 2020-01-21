@@ -3,17 +3,17 @@ import {
   getPosts,
   addPost,
   getVotes,
-  addVote
+  updatePost
 } from "./controllers/PostsController";
 
 const routes = express.Router();
 
 routes.get("/posts", getPosts);
 routes.post("/posts", addPost);
-// routes.put("/posts/:id", updatePost);
+routes.put("/posts", updatePost);
 // routes.delete("/posts/:id", deletePost);
 
 routes.get("/votes", getVotes);
-routes.post("/votes", addVote);
+// routes.post("/votes", addVote);
 
 export default routes;

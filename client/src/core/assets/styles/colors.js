@@ -6,10 +6,11 @@ export default {
   dark: '#666',
   darker: '#333',
   black: '#000',
+  green: '#007f00',
 
   primary: '#7a91ca',
   secundary: '#444a5a',
-  sucess: '#9dca83',
+  success: '#9dca83',
   error: '#e37a7a',
   disabled: 'rgba(255,255,255,0.4)',
 

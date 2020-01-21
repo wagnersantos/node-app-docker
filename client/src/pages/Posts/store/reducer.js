@@ -18,10 +18,6 @@ export default handleActions(
       ...state,
       posts: payload,
     }),
-    [types.SET_POST.SUCCESS]: (state, { payload }) => ({
-      ...state,
-      posts: payload,
-    }),
   },
   initialState,
 );

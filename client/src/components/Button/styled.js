@@ -8,7 +8,7 @@ export const ButtonContainer = styled.TouchableOpacity`
   padding-left: ${metrics.baseMargin}px;
   padding-right: ${metrics.baseMargin}px;
   border: 1px solid
-    ${({ disable }) => (disable ? colors.disabled : colors.black)};
+    ${({ disable }) => (disable ? colors.disabled : colors.white)};
   border-radius: ${metrics.baseRadius}px;
   background-color: ${colors.transparent};
   justify-content: center;
@@ -16,7 +16,7 @@ export const ButtonContainer = styled.TouchableOpacity`
 
 export const ButtonText = styled.Text`
   font-size: 12px;
-  color: ${({ disable }) => (disable ? colors.disabled : colors.black)};
+  color: ${({ disable }) => (disable ? colors.disabled : colors.white)};
   text-align: center;
   text-transform: uppercase;
 `;
