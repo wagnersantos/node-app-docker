@@ -16,7 +16,7 @@ const Search = ({ navigation }) => {
 
   return (
     <>
-      <Header title="Pesquisar posts" navigation={navigation} />
+      <Header title="Pesquisar posts" navigation={navigation} isDark={isDark}/>
 
       <ContainerKeyboardAvoid behavior="padding" enabled={isIos} isDark={isDark}>
         <DismissKeyboard>

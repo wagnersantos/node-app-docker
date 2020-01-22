@@ -1,6 +1,8 @@
+import { BASE_URL }  from 'environment';
+
 const getConfig = () => {
   const config = {
-    baseUrl: 'http://localhost:3002/api',
+    baseUrl: BASE_URL,
   };
 
   return {

@@ -52,6 +52,7 @@ const PostsRegister = ({ navigation }) => {
               value={text}
               maxLength={150}
               minHeight={minHeight}
+              isDark={isDark}
             />
             <Button
               label="salvar post"

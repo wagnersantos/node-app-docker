@@ -18,6 +18,7 @@ export function* loadPosts() {
   } catch (error) {
     const message = error.response?.data?.message;
     yield put(actions.fetchPosts.error(message));
+    console.tron.log('e ==>',error.toString());
   } finally {
     yield put(actions.updateLoaders({ postsList: false }));
   }

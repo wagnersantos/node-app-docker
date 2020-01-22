@@ -8,55 +8,52 @@ import { HITSLOP } from 'core/constants';
 import { colors, metrics } from 'core/assets/styles';
 import { Content, ContentHome, Title } from './styled';
 
-const Header = ({ title, home, navigation, isDark }) => {
-  console.tron.log(navigation);
-  return (
-    <>
-      {home ? (
-        <ContentHome isDark={isDark}>
-          <TouchableOpacity
-            onPress={() => navigation.openDrawer()}
-            hitSlop={HITSLOP}>
-            <Icon
-              name="menu"
-              size={25}
-              style={{ color: isDark ? colors.black : colors.white, paddingRight: metrics.baseMargin }}
-            />
-          </TouchableOpacity>
+const Header = ({ title, home, navigation, isDark }) => (
+  <>
+    {home ? (
+      <ContentHome isDark={isDark}>
+        <TouchableOpacity
+          onPress={() => navigation.openDrawer()}
+          hitSlop={HITSLOP}>
+          <Icon
+            name="menu"
+            size={25}
+            style={{ color: isDark ? colors.black : colors.white, paddingRight: metrics.baseMargin }}
+          />
+        </TouchableOpacity>
 
-          <Title numberOfLines={1} isDark={isDark}>{title}</Title>
+        <Title numberOfLines={1} isDark={isDark}>{title}</Title>
 
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Search')}
-            hitSlop={HITSLOP}>
-            <Icon
-              name="search"
-              size={20}
-              style={{ color: isDark ? colors.black : colors.white }}
-            />
-          </TouchableOpacity>
-        </ContentHome>
-      ) : (
-        <Content isDark={isDark}>
-          <TouchableOpacity
-            hitSlop={HITSLOP}
-            onPress={() => navigation.goBack()}>
-            <Icon
-              name="arrow-back"
-              size={25}
-              style={
-                { color: isDark ? colors.black : colors.white,
-                   paddingRight: metrics.baseMargin
-                }
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Search')}
+          hitSlop={HITSLOP}>
+          <Icon
+            name="search"
+            size={20}
+            style={{ color: isDark ? colors.black : colors.white }}
+          />
+        </TouchableOpacity>
+      </ContentHome>
+    ) : (
+      <Content isDark={isDark}>
+        <TouchableOpacity
+          hitSlop={HITSLOP}
+          onPress={() => navigation.goBack()}>
+          <Icon
+            name="arrow-back"
+            size={25}
+            style={
+              { color: isDark ? colors.black : colors.white,
+                  paddingRight: metrics.baseMargin
               }
-            />
-          </TouchableOpacity>
-          <Title numberOfLines={1} isDark={isDark}>{title}</Title>
-        </Content>
-      )}
-    </>
-  );
-};
+            }
+          />
+        </TouchableOpacity>
+        <Title numberOfLines={1} isDark={isDark}>{title}</Title>
+      </Content>
+    )}
+  </>
+);
 
 Header.defaultProps = {
   title: '',

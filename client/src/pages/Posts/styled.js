@@ -10,7 +10,7 @@ export const Container = styled.View`
   justify-content: space-between;
   padding: ${metrics.basePadding}px;
   background-color: ${({isDark}) => isDark ?  colors.secundary : colors.white};
-  padding-bottom: ${getBottomSpace()}px;
+  padding-bottom: ${20 + getBottomSpace()}px;
 `;
 
 export const ContainerKeyboardAvoid = styled.KeyboardAvoidingView`
@@ -32,7 +32,7 @@ export const TextArea = styled.TextInput`
   background-color: ${colors.transparent};
   border-radius: ${metrics.baseRadius}px;
   border: 1px solid
-    ${({isDark}) => isDark ?   colors.white : colors.black};
+    ${({isDark}) => isDark ? colors.white : colors.black};
   color: ${({isDark}) => isDark ? colors.white: colors.black};
   justify-content: flex-start;
   margin-bottom: ${metrics.baseMargin}px;
