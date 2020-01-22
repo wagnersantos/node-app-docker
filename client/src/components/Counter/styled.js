@@ -17,3 +17,8 @@ export const ButtonIcon = styled.TouchableOpacity`
 export const StyledIcon = styled(Icon)`
   color: ${({ count }) => (count === 0 ? colors.success : colors.green)};
 `;
+
+
+export const CounterText = styled.Text`
+  color: ${({isDark}) => isDark ?  colors.black : colors.white};
+`;

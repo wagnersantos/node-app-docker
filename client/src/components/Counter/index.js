@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native';
 import PropTypes from 'prop-types';
-import { Container, ButtonIcon, StyledIcon } from './styled';
+import { Container, ButtonIcon, StyledIcon, CounterText } from './styled';
 
-const Counter = ({ callBack, initialValue }) => {
+const Counter = ({ callBack, initialValue, isDark }) => {
   const [count, setCount] = useState(initialValue);
 
   const incrementCount = () => {
@@ -17,7 +17,7 @@ const Counter = ({ callBack, initialValue }) => {
       <ButtonIcon onPress={incrementCount}>
         <StyledIcon name="arrow-upward" size={20} count={count} />
       </ButtonIcon>
-      {count > 0 && <Text>{count}</Text>}
+      {count > 0 && <CounterText isDark={isDark}>{count}</CounterText>}
     </Container>
   );
 };

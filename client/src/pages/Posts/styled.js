@@ -55,3 +55,7 @@ export const ContainerText = styled.View`
 export const StyledText = styled.Text`
   color: ${({isDark}) => isDark ?  colors.white : colors.black};
 `;
+
+export const ItemText = styled.Text`
+  color: ${({isDark}) => isDark ?  colors.black : colors.white};
+`;

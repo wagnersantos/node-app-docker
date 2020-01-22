@@ -11,7 +11,7 @@ import { actions } from './store/actions';
 
 import { Header, Button, List, Spinner, Counter } from 'components';
 import { colors } from 'core/assets/styles';
-import { Container, Item, Actions, ContainerText, StyledText } from './styled';
+import { Container, Item, Actions, ContainerText, StyledText, ItemText } from './styled';
 
 const Posts = ({ navigation }) => {
   const [isRefresh, setIsRefresh] = useState(false);
@@ -42,10 +42,11 @@ const Posts = ({ navigation }) => {
 
   const renderItem = useCallback(item => (
     <Item isDark={isDark}>
-      <Text numberOfLines={1}>{item.post}</Text>
+      <ItemText numberOfLines={1} isDark={isDark}>{item.post}</ItemText>
       <Counter
         callBack={count => handleCounter(count, item)}
         initialValue={item.upvote}
+        isDark={isDark}
       />
     </Item>
   ));
