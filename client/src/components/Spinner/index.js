@@ -8,7 +8,7 @@ import { WrapperSpinnerFull, WrapperSpinner, Spin } from './styled';
 const Spinner = ({ full, size, color, visible, indicator }) => {
   if (full) {
     return (
-      <Modal transparent visible={visible}>
+      <Modal transparent visible={visible} testID="spinner">
         <WrapperSpinnerFull>
           <Spin size={size} color={color} />
         </WrapperSpinnerFull>
@@ -18,7 +18,7 @@ const Spinner = ({ full, size, color, visible, indicator }) => {
 
   if (visible) {
     return (
-      <WrapperSpinner>
+      <WrapperSpinner testID="spinner">
         <Spin size={size} color={color} />
       </WrapperSpinner>
     );

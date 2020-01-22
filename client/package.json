@@ -8,9 +8,11 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "reset-cache": "react-native start --reset-cache",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "test --watchAll=false --coverage"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.7.1",
     "@react-native-community/masked-view": "^0.1.6",
     "axios": "^0.19.1",
     "lodash": "^4.17.15",
@@ -37,6 +39,9 @@
     "@babel/core": "^7.8.3",
     "@babel/runtime": "^7.8.3",
     "@react-native-community/eslint-config": "^0.0.6",
+    "@testing-library/jest-dom": "^5.0.0",
+    "@testing-library/react-native": "^5.0.3",
+    "axios-mock-adapter": "^1.17.0",
     "babel-jest": "^24.9.0",
     "babel-plugin-inline-import": "^3.0.0",
     "babel-plugin-module-resolver": "^4.0.0",
@@ -55,6 +60,38 @@
     "react-test-renderer": "16.9.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "testMatch": [
+      "**/__tests__/*.test.js"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ],
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 10,
+        "branches": 10,
+        "functions": 10,
+        "lines": 10
+      }
+    },
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/styled.js",
+      "!src/translations/**",
+      "!src/components/index.js",
+      "!src/components/Header/index.js",
+      "!src/components/Button/index.js",
+      "!src/config/*",
+      "!src/core/**",
+      "!src/index.js",
+      "!src/reducers.js",
+      "!src/sagas.js",
+      "!src/routes.js",
+      "!src/store.js"
+    ]
   }
 }
