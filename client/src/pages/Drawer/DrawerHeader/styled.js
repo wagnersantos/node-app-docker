@@ -10,7 +10,7 @@ export const HeaderDrawer = styled.View`
 
 export const User = styled.View`
   flex: 1;
-  background: ${colors.white};
+  background: ${({isDark}) => isDark ?  colors.white : colors.black};
   height: 120px;
   width: 120px;
   border-radius: ${metrics.baseRadius * 20}px;
@@ -24,12 +24,12 @@ export const CustomIcon = styled(Icon).attrs({
   size: 110,
 })`
   margin-top: ${metrics.baseMargin}px;
-  color: ${colors.secundary};
+  color: ${({isDark}) => isDark ?   colors.secundary: colors.white};
 `;
 
 export const Fill = styled.View`
   position: absolute;
-  background: ${colors.secundary};
+  background: ${({isDark}) => isDark ?  colors.secundary : colors.white};
   width: 72px;
   height: 30px;
   bottom: 0;
@@ -39,5 +39,5 @@ export const Fill = styled.View`
 export const CustomText = styled.Text`
   font-weight: bold;
   line-height: 20px;
-  color: ${colors.white};
+  color: ${({isDark}) => isDark ?  colors.white : colors.black};
 `;

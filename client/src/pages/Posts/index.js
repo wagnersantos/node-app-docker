@@ -41,7 +41,7 @@ const Posts = ({ navigation }) => {
   );
 
   const renderItem = useCallback(item => (
-    <Item>
+    <Item isDark={isDark}>
       <Text numberOfLines={1}>{item.post}</Text>
       <Counter
         callBack={count => handleCounter(count, item)}
@@ -55,7 +55,7 @@ const Posts = ({ navigation }) => {
       if (posts.length === 0) {
         return (
           <ContainerText>
-            <StyledText>Adicione um post para começar</StyledText>
+            <StyledText isDark={isDark}>Adicione um post para começar</StyledText>
           </ContainerText>
         );
       }
@@ -75,12 +75,13 @@ const Posts = ({ navigation }) => {
 
   return (
     <>
-      <Header title="Listar posts" home navigation={navigation} />
-      <Container>
+      <Header title="Listar posts" home navigation={navigation} isDark={isDark} />
+      <Container isDark={isDark} >
         <Actions>
           <Button
             label="incluir post"
             onPress={() => navigation.navigate('PostRegister')}
+            isDark={isDark}
           />
         </Actions>
 

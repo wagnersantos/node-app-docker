@@ -23,6 +23,7 @@ const Input = ({
   borderColor,
   focusColor,
   refs,
+  isDark,
   ...rest
 }) => {
   const [border, setBorder] = useState();
@@ -74,7 +75,7 @@ const Input = ({
     <Container>
       {!!label && (
         <TextContainer style={{ top: fadeSlide }}>
-          <TextStyled>{label}</TextStyled>
+          <TextStyled  isDark={isDark}>{label}</TextStyled>
         </TextContainer>
       )}
       <InputStyled
@@ -88,11 +89,12 @@ const Input = ({
         border={border}
         onFocus={() => changeBorder()}
         onBlur={() => focusOut()}
-        placeholderTextColor={colors.white}
+        placeholderTextColor={isDark ? colors.white : colors.black}
+        isDark={isDark}
       />
       {search && (
         <Action onPress={onPress}>
-          <IconStyled name="search" size={25} />
+          <IconStyled name="search" size={25} isDark={isDark}/>
         </Action>
       )}
     </Container>
@@ -108,6 +110,7 @@ Input.defaultProps = {
   borderColor: '',
   focusColor: '',
   refs: () => {},
+  isDark: false
 };
 
 Input.propTypes = {
@@ -121,6 +124,7 @@ Input.propTypes = {
   borderColor: PropTypes.string,
   focusColor: PropTypes.string,
   refs: PropTypes.func,
+  isDark: PropTypes.bool,
 };
 
 export default Input;

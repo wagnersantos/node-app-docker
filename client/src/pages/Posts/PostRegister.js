@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Keyboard, Platform } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { withNavigation } from 'react-navigation';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { selectors as selectorsDrawer } from 'pages/Drawer/store/reducer';
 import { actions } from './store/actions';
 
 import { Header, Button, DismissKeyboard } from 'components';
@@ -15,6 +16,8 @@ const PostsRegister = ({ navigation }) => {
 
   const isIos = Platform.OS === 'ios';
   const minHeight = isIos ? 200 : 0;
+
+  const isDark = useSelector(state => selectorsDrawer.getTheme(state));
 
   const dispatch = useDispatch();
   const setPost = data => dispatch(actions.setPost.request(data));
@@ -36,11 +39,11 @@ const PostsRegister = ({ navigation }) => {
 
   return (
     <>
-      <Header title="Incluir post" textAlign="center" navigation={navigation} />
+      <Header title="Incluir post" textAlign="center" navigation={navigation} isDark={isDark} />
 
       <ContainerKeyboardAvoid behavior="padding" enabled={isIos}>
         <DismissKeyboard>
-          <Container>
+          <Container isDark={isDark}>
             <TextArea
               keyboardAppearance="dark"
               multiline
@@ -54,6 +57,7 @@ const PostsRegister = ({ navigation }) => {
               label="salvar post"
               onPress={handleNewPost}
               disabled={disableButton}
+              isDark={isDark}
             />
           </Container>
         </DismissKeyboard>

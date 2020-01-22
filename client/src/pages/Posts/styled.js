@@ -9,7 +9,7 @@ export const Container = styled.View`
   flex-direction: column;
   justify-content: space-between;
   padding: ${metrics.basePadding}px;
-  background-color: ${colors.secundary};
+  background-color: ${({isDark}) => isDark ?  colors.secundary : colors.white};
   padding-bottom: ${getBottomSpace()}px;
 `;
 
@@ -21,7 +21,7 @@ export const ContainerKeyboardAvoid = styled.KeyboardAvoidingView`
 
 export const Item = styled.View`
   align-items: center;
-  background-color: ${colors.light};
+  background-color: ${({isDark}) => isDark ?  colors.light : colors.dark};
   flex-direction: row;
   height: 49px;
   padding: ${metrics.basePadding / 2}px;
@@ -32,8 +32,8 @@ export const TextArea = styled.TextInput`
   background-color: ${colors.transparent};
   border-radius: ${metrics.baseRadius}px;
   border: 1px solid
-    ${({ disable }) => (disable ? colors.disabled : colors.white)};
-  color: ${colors.white};
+    ${({isDark}) => isDark ?   colors.white : colors.black};
+  color: ${({isDark}) => isDark ? colors.white: colors.black};
   justify-content: flex-start;
   margin-bottom: ${metrics.baseMargin}px;
   padding: ${metrics.baseMargin}px;
@@ -53,5 +53,5 @@ export const ContainerText = styled.View`
 `;
 
 export const StyledText = styled.Text`
-  color: ${colors.white};
+  color: ${({isDark}) => isDark ?  colors.white : colors.black};
 `;

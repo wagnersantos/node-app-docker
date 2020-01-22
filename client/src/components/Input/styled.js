@@ -13,8 +13,8 @@ export const Container = styled.View`
 export const InputStyled = styled.TextInput`
   background-color: ${colors.transparent};
   border-radius: ${metrics.baseRadius}px;
-  border: 1px solid ${colors.white};
-  color: ${colors.white};
+  border: 1px solid ${({isDark}) => isDark ?  colors.white : colors.black};
+  color: ${({isDark}) => isDark ?  colors.white : colors.black};
   flex: 1;
   font-size: 16px;
   height: 50px;
@@ -35,8 +35,8 @@ export const TextContainer = styled(Animated.View).attrs({
 export const TextStyled = styled.Text`
   font-weight: bold;
   font-size: 14px;
-  background-color: ${colors.secundary};
-  color: ${colors.white};
+  background-color: ${({isDark}) => isDark ?  colors.secundary : colors.white};
+  color: ${({isDark}) => isDark ?  colors.white : colors.black};
   padding: 0 3px;
 `;
 
@@ -47,5 +47,5 @@ export const Action = styled.TouchableOpacity`
 `;
 
 export const IconStyled = styled(Icon)`
-  color: ${colors.white};
+  color: ${({isDark}) => isDark ?  colors.white : colors.black};
 `;

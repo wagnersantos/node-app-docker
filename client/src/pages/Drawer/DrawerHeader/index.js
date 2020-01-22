@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import { HeaderDrawer, User, CustomIcon, Fill, CustomText } from './styled';
 
 const DrawerHeader = ({ name, isDark }) => (
-  <HeaderDrawer>
-    <User>
-      <CustomIcon name="person" />
-      <Fill />
+  <HeaderDrawer >
+    <User isDark={isDark}>
+      <CustomIcon name="person" isDark={isDark}/>
+      <Fill isDark={isDark}/>
     </User>
-    <CustomText>{name}</CustomText>
+    <CustomText isDark={isDark}>{name}</CustomText>
   </HeaderDrawer>
 );
 

@@ -10,7 +10,7 @@ export const ContentHome = styled.View`
   justify-content: center;
   height: ${54 + getStatusBarHeight()}px;
   padding-top: ${getStatusBarHeight()}px;
-  background-color: ${colors.white};
+  background-color: ${({isDark}) => isDark ?  colors.white : colors.primary};
   elevation: 1;
 `;
 
@@ -21,7 +21,7 @@ export const Content = styled.View`
   justify-content: flex-start;
   height: ${54 + getStatusBarHeight()}px;
   padding-top: ${getStatusBarHeight()}px;
-  background-color: ${colors.white};
+  background-color: ${({isDark}) => isDark ?  colors.white : colors.primary};
   elevation: 1;
 `;
 
@@ -31,4 +31,5 @@ export const Title = styled.Text`
   flex-grow: 1;
   align-self: flex-end;
   text-align: center;
+  color: ${({isDark}) => isDark ?  colors.black : colors.white};
 `;
