@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Keyboard, Platform } from 'react-native';
+import { Keyboard } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { selectors as selectorsDrawer } from 'pages/Drawer/store/reducer';
 import { actions } from './store/actions';
 
+import { isIos } from 'environment';
 import { Header, Button, DismissKeyboard } from 'components';
 import { Container, TextArea, ContainerKeyboardAvoid } from './styled';
 
@@ -14,7 +15,6 @@ const PostsRegister = ({ navigation }) => {
   const [text, setText] = useState();
   const [disableButton, setButton] = useState(true);
 
-  const isIos = Platform.OS === 'ios';
   const minHeight = isIos ? 200 : 0;
 
   const isDark = useSelector(state => selectorsDrawer.getTheme(state));

@@ -4,13 +4,13 @@ import { useSelector } from 'react-redux';
 
 import { selectors as selectorsDrawer } from 'pages/Drawer/store/reducer';
 
+import { isIos } from 'environment';
 import { Header, Input, DismissKeyboard } from 'components';
 import { Container, Form, ContainerKeyboardAvoid } from './styled';
 
 const Search = ({ navigation }) => {
   const [text, setText] = useState('');
 
-  const isIos = Platform.OS === 'ios';
 
   const isDark = useSelector(state => selectorsDrawer.getTheme(state));
 
