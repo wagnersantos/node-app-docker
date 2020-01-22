@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import { colors, metrics } from 'core/assets/styles';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 export const ContentHome = styled.View`
   padding: ${metrics.basePadding}px;

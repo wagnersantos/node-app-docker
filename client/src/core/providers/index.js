@@ -13,7 +13,7 @@ export default {
   }) => {
     const abort = axios.CancelToken.source();
     const cancelTimeOut = setTimeout(() => abort.cancel(), timeout);
-    
+
     return Api.request(path, {
       method,
       data: params,

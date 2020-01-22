@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
-import {Animated} from 'react-native';
+import { Animated } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import {metrics, colors} from 'core/assets/styles';
+import { metrics, colors } from 'core/assets/styles';
 
 export const Container = styled.View`
   align-items: center;
@@ -24,7 +24,9 @@ export const InputStyled = styled.TextInput`
   padding-right: 40px;
 `;
 
-export const TextContainer = styled(Animated.View)`
+export const TextContainer = styled(Animated.View).attrs({
+  pointerEvents: 'none',
+})`
   position: absolute;
   left: 13px;
   z-index: 999;

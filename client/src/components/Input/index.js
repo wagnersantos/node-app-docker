@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import {Animated, Easing} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Animated, Easing } from 'react-native';
 import PropTypes from 'prop-types';
 
-import {colors} from 'core/assets/styles';
-// import {CustomIcons} from 'components';
+import { colors } from 'core/assets/styles';
 import {
   Container,
   InputStyled,
@@ -24,10 +23,6 @@ const Input = ({
   borderColor,
   focusColor,
   refs,
-  login,
-  isDark,
-  rightIcon,
-  rightPress,
   ...rest
 }) => {
   const [border, setBorder] = useState();
@@ -61,7 +56,6 @@ const Input = ({
 
   const changeBorder = () => {
     slideUp();
-    // eslint-disable-next-line no-nested-ternary
     setBorder(focusColor === '' ? colors.white : focusColor);
     setValuePlaceholder(placeholder);
   };
@@ -79,8 +73,8 @@ const Input = ({
   return (
     <Container>
       {!!label && (
-        <TextContainer login={login} style={{top: fadeSlide}}>
-          <TextStyled login={login}>{label}</TextStyled>
+        <TextContainer style={{ top: fadeSlide }}>
+          <TextStyled>{label}</TextStyled>
         </TextContainer>
       )}
       <InputStyled
@@ -94,18 +88,11 @@ const Input = ({
         border={border}
         onFocus={() => changeBorder()}
         onBlur={() => focusOut()}
-        login={login}
         placeholderTextColor={colors.white}
       />
       {search && (
         <Action onPress={onPress}>
           <IconStyled name="search" size={25} />
-        </Action>
-      )}
-
-      {!!rightIcon && (
-        <Action onPress={rightPress}>
-          {/* <CustomIcons isDark={isDark} svg={rightIcon} height="25" width="25" /> */}
         </Action>
       )}
     </Container>
@@ -121,10 +108,6 @@ Input.defaultProps = {
   borderColor: '',
   focusColor: '',
   refs: () => {},
-  login: false,
-  isDark: false,
-  rightIcon: '',
-  rightPress: () => {},
 };
 
 Input.propTypes = {
@@ -138,10 +121,6 @@ Input.propTypes = {
   borderColor: PropTypes.string,
   focusColor: PropTypes.string,
   refs: PropTypes.func,
-  login: PropTypes.bool,
-  isDark: PropTypes.bool,
-  rightIcon: PropTypes.string,
-  rightPress: PropTypes.func,
 };
 
 export default Input;

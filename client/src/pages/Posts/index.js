@@ -1,22 +1,24 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import  { Text } from 'react-native';
+import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { withNavigation } from 'react-navigation';
 import debounce from 'lodash/debounce';
 
-
+import { selectors as selectorsDrawer } from 'pages/Drawer/store/reducer';
 import { selectors } from './store/reducer';
 import { actions } from './store/actions';
 
-import { Header, Button, List, Spinner, Counter, Text } from 'components';
+import { Header, Button, List, Spinner, Counter } from 'components';
 import { colors } from 'core/assets/styles';
-import { Container, Item, Actions, ContainerText } from './styled';
+import { Container, Item, Actions, ContainerText, StyledText } from './styled';
 
 const Posts = ({ navigation }) => {
   const [isRefresh, setIsRefresh] = useState(false);
+
   const posts = useSelector(state => selectors.getPosts(state));
   const loaders = useSelector(state => selectors.getLoaders(state));
+  const isDark = useSelector(state => selectorsDrawer.getTheme(state));
 
   const dispatch = useDispatch();
   const getPosts = () => dispatch(actions.fetchPosts.request());
@@ -53,9 +55,9 @@ const Posts = ({ navigation }) => {
       if (posts.length === 0) {
         return (
           <ContainerText>
-            <Text>Adicione um post</Text>;
+            <StyledText>Adicione um post para começar</StyledText>
           </ContainerText>
-        )
+        );
       }
 
       return (
@@ -73,7 +75,7 @@ const Posts = ({ navigation }) => {
 
   return (
     <>
-      <Header title="Listar posts" home />
+      <Header title="Listar posts" home navigation={navigation} />
       <Container>
         <Actions>
           <Button

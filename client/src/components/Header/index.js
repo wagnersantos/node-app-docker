@@ -1,45 +1,54 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
-import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { HITSLOP } from 'core/constants';
+
 import { colors, metrics } from 'core/assets/styles';
 import { Content, ContentHome, Title } from './styled';
 
-const Header = ({ title, home, navigation }) => (
-  <>
-    {home ? (
-      <ContentHome>
-        <TouchableOpacity
-          onPress={() => navigation.openDrawer()}
-          hitSlop={HITSLOP}>
-          <Icon
-            name="menu"
-            size={25}
-            style={{ color: colors.black, paddingRight: metrics.baseMargin }}
-          />
-        </TouchableOpacity>
-        <Title numberOfLines={1}>{title}</Title>
-        <Icon name="search" size={20} style={{ color: colors.black }} />
-      </ContentHome>
-    ) : (
-      <Content>
-        <TouchableOpacity
-          hitSlop={HITSLOP}
-          onPress={() => navigation.goBack(null)}>
-          <Icon
-            name="arrow-back"
-            size={25}
-            style={{ color: colors.black, paddingRight: metrics.baseMargin }}
-          />
-        </TouchableOpacity>
-        <Title numberOfLines={1}>{title}</Title>
-      </Content>
-    )}
-  </>
-);
+const Header = ({ title, home, navigation }) => {
+  console.tron.log(navigation);
+  return (
+    <>
+      {home ? (
+        <ContentHome>
+          <TouchableOpacity
+            onPress={() => navigation.openDrawer()}
+            hitSlop={HITSLOP}>
+            <Icon
+              name="menu"
+              size={25}
+              style={{ color: colors.black, paddingRight: metrics.baseMargin }}
+            />
+          </TouchableOpacity>
+
+          <Title numberOfLines={1}>{title}</Title>
+
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Search')}
+            hitSlop={HITSLOP}>
+            <Icon name="search" size={20} style={{ color: colors.black }} />
+          </TouchableOpacity>
+        </ContentHome>
+      ) : (
+        <Content>
+          <TouchableOpacity
+            hitSlop={HITSLOP}
+            onPress={() => navigation.goBack()}>
+            <Icon
+              name="arrow-back"
+              size={25}
+              style={{ color: colors.black, paddingRight: metrics.baseMargin }}
+            />
+          </TouchableOpacity>
+          <Title numberOfLines={1}>{title}</Title>
+        </Content>
+      )}
+    </>
+  );
+};
 
 Header.defaultProps = {
   title: '',
@@ -57,4 +66,4 @@ Header.propTypes = {
   }),
 };
 
-export default withNavigation(Header);
+export default Header;

@@ -2,17 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, View } from 'react-native';
+
 import { WrapperSpinnerFull, WrapperSpinner, Spin } from './styled';
 
-const Spinner = ({
-  full, size, color, visible, indicator,
-}) => {
+const Spinner = ({ full, size, color, visible, indicator }) => {
   if (full) {
     return (
-      <Modal
-        transparent
-        visible={visible}
-      >
+      <Modal transparent visible={visible}>
         <WrapperSpinnerFull>
           <Spin size={size} color={color} />
         </WrapperSpinnerFull>

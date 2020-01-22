@@ -8,7 +8,7 @@ export const Container = styled.View`
   flex: 1;
   flex-direction: column;
   justify-content: space-between;
-  padding: ${metrics.baseMargin}px;
+  padding: ${metrics.basePadding}px;
   background-color: ${colors.secundary};
   padding-bottom: ${getBottomSpace()}px;
 `;
@@ -24,7 +24,7 @@ export const Item = styled.View`
   background-color: ${colors.light};
   flex-direction: row;
   height: 49px;
-  padding: 10px;
+  padding: ${metrics.basePadding / 2}px;
   justify-content: space-between;
 `;
 
@@ -33,7 +33,7 @@ export const TextArea = styled.TextInput`
   border-radius: ${metrics.baseRadius}px;
   border: 1px solid
     ${({ disable }) => (disable ? colors.disabled : colors.white)};
-  color: ${colors.black};
+  color: ${colors.white};
   justify-content: flex-start;
   margin-bottom: ${metrics.baseMargin}px;
   padding: ${metrics.baseMargin}px;
@@ -48,5 +48,10 @@ export const Actions = styled.View`
 `;
 
 export const ContainerText = styled.View`
-  align-self: flex-start;
+  flex: 1;
+  align-items: center;
+`;
+
+export const StyledText = styled.Text`
+  color: ${colors.white};
 `;

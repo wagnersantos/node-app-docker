@@ -15,5 +15,5 @@ export const ButtonIcon = styled.TouchableOpacity`
 `;
 
 export const StyledIcon = styled(Icon)`
-  color: ${({count}) => count === 0 ? colors.success : colors.green};
+  color: ${({ count }) => (count === 0 ? colors.success : colors.green)};
 `;

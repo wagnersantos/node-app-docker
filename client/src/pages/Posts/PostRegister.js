@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Keyboard, Platform } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { withNavigation } from 'react-navigation';
 
 import { actions } from './store/actions';
@@ -8,7 +9,7 @@ import { actions } from './store/actions';
 import { Header, Button, DismissKeyboard } from 'components';
 import { Container, TextArea, ContainerKeyboardAvoid } from './styled';
 
-const Posts = ({navigation}) => {
+const PostsRegister = ({ navigation }) => {
   const [text, setText] = useState();
   const [disableButton, setButton] = useState(true);
 
@@ -16,7 +17,7 @@ const Posts = ({navigation}) => {
   const minHeight = isIos ? 200 : 0;
 
   const dispatch = useDispatch();
-  const setPost = (data) => dispatch(actions.setPost.request(data));
+  const setPost = data => dispatch(actions.setPost.request(data));
 
   const handleTextArea = event => {
     const enable = event === '';
@@ -35,7 +36,8 @@ const Posts = ({navigation}) => {
 
   return (
     <>
-      <Header title="Incluir post" textAlign="center" />
+      <Header title="Incluir post" textAlign="center" navigation={navigation} />
+
       <ContainerKeyboardAvoid behavior="padding" enabled={isIos}>
         <DismissKeyboard>
           <Container>
@@ -60,4 +62,8 @@ const Posts = ({navigation}) => {
   );
 };
 
-export default withNavigation(Posts);
+PostsRegister.proTypes = {
+  navigation: PropTypes.instanceOf(Object).isRequired,
+};
+
+export default withNavigation(PostsRegister);

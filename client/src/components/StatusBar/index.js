@@ -1,12 +1,6 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
-// import {colors} from 'core/assets/styles';
+import { StatusBar } from 'react-native';
 
-const Bar = () => (
-  <StatusBar
-    barStyle="light-content"
-    // backgroundColor={isDark ? colors.secondary : colors.blue}
-  />
-);
+const Bar = () => <StatusBar barStyle="light-content" />;
 
 export default Bar;

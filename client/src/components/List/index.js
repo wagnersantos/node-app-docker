@@ -24,7 +24,7 @@ List.defaultProps = {
 };
 
 List.propTypes = {
-  data: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  data: PropTypes.instanceOf(Array),
   renderItem: PropTypes.func.isRequired,
   keyExtractor: PropTypes.func,
 };
