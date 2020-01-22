@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Switches } from 'components';
@@ -8,11 +8,16 @@ import { ItemMenu, CustomText } from './styled';
 
 const DrawerItem = ({ isDark }) => {
   const dispatch = useDispatch();
-  const setTheme = data => dispatch(actions.setTheme.receive(data));
+  const getTheme = () => dispatch(actions.fetchTheme.request());
+  const setTheme = data => dispatch(actions.setTheme.request(data));
 
   const toggleSwitch = () => {
     setTheme({ isDark: !isDark });
   };
+
+  useEffect(() => {
+    getTheme();
+  }, []);
 
   return (
     <>
