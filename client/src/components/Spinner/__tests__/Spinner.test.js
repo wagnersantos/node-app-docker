@@ -3,11 +3,14 @@ import { render, cleanup } from '@testing-library/react-native';
 
 import Spinner from '..';
 
-jesst.mock('reactotron-react-native', () => {
-  return {
-    reactotron: jest.fn(),
-  };
-});
+jest.mock('reactotron-react-native', () => ({
+  reactotron: {
+    configure: () => reactotron,
+    useReactNative: () => reactotron,
+    use: () => reactotron,
+    connect: () => reactotron,
+  })
+);
 
 describe("Spinner don't rendering", () => {
   it("Shouldn't render Spinner when show is false", () => {
