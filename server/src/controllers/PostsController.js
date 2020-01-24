@@ -8,17 +8,18 @@ import {
 } from "../models/PostsModels";
 
 export const getPosts = (req, res) => {
-  getPostsDB((error, results) => {
-    if (error) {
-      throw error;
-    }
+  getPostsDB()
+    .then(results => 
+      res.status(200).json(results.rows))
+    .catch(error => res.status(500).json({ 
+      status: 500,
+      message: error.message
+    }))
 
-    res.status(200).json(results.rows);
-  });
 };
 
 export const addPost = (req, res) => {
-  const { post } = req.body;
+  const { post } = req.body;s
   addPostDB({
     data: post,
     cb: error => {
@@ -54,19 +55,25 @@ export const updatePost = (req, res) => {
 
 export const deletePost = (req, res) => {
   const { id } = req.params;
-  deletePostDB({
-    id,
-    cb: error => {
-      if (error) {
-        throw error
-        res.status(500).json({ 
-          status: "error",
-            message: "Encountered an internal error when deleting an post."
-        })
-      }
-      res.status(200).json({ status: "success", message: "delete post." });
-    }
-  });
+  deletePostDB(id).then(results => 
+    res.status(200).json({ status: "success", message: "delete post." }))
+  .catch(error => res.status(500).json({ 
+    status: 500,
+    message: error.message
+  }))
+
+  // deletePostDB({
+  //   id,
+  //   cb: (error, results) => {
+  //     if (error) {
+  //      return res.status(500).json({ 
+  //         status: "error",
+  //           message: "Encountered an internal error when deleting an post."
+  //       })
+  //     }
+  //     res.status(200).json({ status: "success", message: "delete post." });
+  //   }
+  // });
 };
 
 
@@ -76,10 +83,9 @@ export const searchPost = (req, res) => {
     q,
     cb: (error, results) => {
       if (error) {
-        throw error
-        res.status(500).json({ 
+        return res.status(500).json({ 
           status: "error",
-            message: "Encountered an internal error when deleting an post."
+            message: error.message
         })
       }
       res.status(200).json(results.rows);

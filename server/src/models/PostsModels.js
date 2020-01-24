@@ -1,6 +1,6 @@
 import { pool } from "../../config";
 
-export const getPostsDB = cb => pool.query("SELECT * FROM posts", cb);
+export const getPostsDB = () => pool.query("SELECT * FROM posts")
 
 export const addPostDB = ({ data, cb }) => {
   pool.query(`INSERT INTO posts (post, upvote) VALUES ('${data}',0)`, cb);
@@ -16,14 +16,9 @@ export const updatePostDB = ({ data, cb }) => {
   );
 };
 
-export const deletePostDB = ({ id, cb })  => {
-  pool.query(`DELETE FROM posts WHERE id = ${id}`).catch(e => {
-    console.log(e);
-    cb(e);
-  })
+export const deletePostDB = ({ id, cb })  => 
+  pool.query(`DELETE FROM posts WHERE id = ${id}`)
 
-  cb();
-}
 
 export const searchPostDB = ({ q, cb })  => {
   pool.query(`SELECT * FROM posts WHERE post SIMILAR TO '%${q}%'`, cb)
