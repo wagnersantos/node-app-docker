@@ -3,7 +3,8 @@ import {
   addPostDB,
   getVotesDB,
   updatePostDB,
-  deletePostDB
+  deletePostDB,
+  searchPostDB
 } from "../models/PostsModels";
 
 export const getPosts = (req, res) => {
@@ -52,7 +53,7 @@ export const updatePost = (req, res) => {
 };
 
 export const deletePost = (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
   deletePostDB({
     id,
     cb: error => {
@@ -64,6 +65,24 @@ export const deletePost = (req, res) => {
         })
       }
       res.status(200).json({ status: "success", message: "delete post." });
+    }
+  });
+};
+
+
+export const searchPost = (req, res) => {
+  const { q } = req.params;
+  searchPostDB({
+    q,
+    cb: (error, results) => {
+      if (error) {
+        throw error
+        res.status(500).json({ 
+          status: "error",
+            message: "Encountered an internal error when deleting an post."
+        })
+      }
+      res.status(200).json(results.rows);
     }
   });
 };

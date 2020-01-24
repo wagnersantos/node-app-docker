@@ -24,3 +24,7 @@ export const deletePostDB = ({ id, cb })  => {
 
   cb();
 }
+
+export const searchPostDB = ({ q, cb })  => {
+  pool.query(`SELECT * FROM posts WHERE post SIMILAR TO '%${q}%'`, cb)
+}
