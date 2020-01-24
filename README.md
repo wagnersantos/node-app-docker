@@ -3,6 +3,10 @@
 - Node
 - Express
 
+# Database
+  
+- Postgres
+
 # App
 
 - React-native
