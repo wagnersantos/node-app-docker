@@ -15,3 +15,12 @@ export const updatePostDB = ({ data, cb }) => {
     cb
   );
 };
+
+export const deletePostDB = ({ id, cb })  => {
+  pool.query(`DELETE FROM posts WHERE id = ${id}`).catch(e => {
+    console.log(e);
+    cb(e);
+  })
+
+  cb();
+}
