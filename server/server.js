@@ -1,6 +1,7 @@
 import express from "express";
 import requireDir from "require-dir";
 import cors from "cors";
+import "babel-polyfill";
 import "./config";
 
 import routes from "./src/routes";

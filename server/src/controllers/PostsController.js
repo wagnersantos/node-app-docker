@@ -1,94 +1,77 @@
-import {
-  getPostsDB,
-  addPostDB,
-  getVotesDB,
-  updatePostDB,
-  deletePostDB,
-  searchPostDB
-} from "../models/PostsModels";
+import PostModels from "../models/PostsModels";
 
-export const getPosts = (req, res) => {
-  getPostsDB()
-    .then(results => 
-      res.status(200).json(results.rows))
-    .catch(error => res.status(500).json({ 
+export const getPosts = async (req, res) => {
+  try {
+    const results = await PostModels.getPostsDB();
+    res.status(200).json(results.rows);
+  } catch (error) {
+    res.status(500).json({
       status: 500,
       message: error.message
-    }))
-
+    });
+  }
 };
 
-export const addPost = (req, res) => {
-  const { post } = req.body;s
-  addPostDB({
-    data: post,
-    cb: error => {
-      if (error) {
-        throw error;
-      }
-      res.status(201).json({ status: "success", message: "post added." });
-    }
-  });
+export const addPost = async (req, res) => {
+  try {
+    const { post } = req.body;
+    await PostModels.addPostDB(post);
+    res.status(200).json({ status: 200, post });
+  } catch (error) {
+    res.status(500).json({
+      status: 500,
+      message: error.message
+    });
+  }
 };
 
-export const getVotes = (req, res) => {
-  getVotesDB((error, results) => {
-    if (error) {
-      throw error;
-    }
+export const getVotes = async (req, res) => {
+  try {
+    const results = await PostModels.getVotesDB();
     res.status(200).json(results.rows);
-  });
+  } catch (error) {
+    res.status(500).json({
+      status: 500,
+      message: error.message
+    });
+  }
 };
 
-export const updatePost = (req, res) => {
-  const { upvote, id } = req.body;
-  updatePostDB({
-    data: { upvote, id },
-    cb: error => {
-      if (error) {
-        throw error;
-      }
-      res.status(201).json({ status: "success", message: "update post." });
-    }
-  });
+export const updatePost = async (req, res) => {
+  try {
+    const { upvote, id } = req.body;
+    await PostModels.updatePostDB({ upvote, id });
+    res.status(200).json({ status: 200, upvote, id });
+  } catch (error) {
+    res.status(500).json({
+      status: 500,
+      message: error.message
+    });
+  }
 };
 
-export const deletePost = (req, res) => {
-  const { id } = req.params;
-  deletePostDB(id).then(results => 
-    res.status(200).json({ status: "success", message: "delete post." }))
-  .catch(error => res.status(500).json({ 
-    status: 500,
-    message: error.message
-  }))
-
-  // deletePostDB({
-  //   id,
-  //   cb: (error, results) => {
-  //     if (error) {
-  //      return res.status(500).json({ 
-  //         status: "error",
-  //           message: "Encountered an internal error when deleting an post."
-  //       })
-  //     }
-  //     res.status(200).json({ status: "success", message: "delete post." });
-  //   }
-  // });
+export const deletePost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await PostModels.deletePostDB(id );
+    res.status(200).json({ status: "success", message: "delete post." });
+  } catch (error) {
+    res.status(500).json({
+      status: 500,
+      message: error.message
+    });
+  }
 };
 
-
-export const searchPost = (req, res) => {
-  const { q } = req.params;
-  searchPostDB({
-    q,
-    cb: (error, results) => {
-      if (error) {
-        return res.status(500).json({ 
-          status: "error",
-            message: error.message
-        })
-      }
-      res.status(200).json(results.rows);
-    }
-  });
+export const searchPost = async (req, res) => {
+  try {
+    const { q } = req.params;
+    const results = await PostModels.searchPostDB(q);
+    res.status(200).json(results.rows);
+  } catch (error) {
+    res.status(500).json({
+      status: 500,
+      message: error.message
+    });
+  }
 };
