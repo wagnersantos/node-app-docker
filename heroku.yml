@@ -1,0 +1,13 @@
+setup:
+  addons:
+    - plan: heroku-postgresql
+      as: DATABASE
+  config:
+    DB_USER: etlwymluppaatp
+    DB_PASS: 347efbbe5f5b917ed93c310527e05ee48f5c2d43eb3d2e446768a484670025f6
+    DB_HOST: ec2-174-129-33-139.compute-1.amazonaws.com
+    DB_DATABASE: d4ajsmvsk5g6oi
+    DB_PORT: 5432
+build:
+  docker:
+    web: server/Dockerfile
