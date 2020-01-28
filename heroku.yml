@@ -11,31 +11,3 @@ setup:
 build:
   docker:
     web: server/Dockerfile
-    # worker: worker/Dockerfile
-#   config:
-#     RAILS_ENV: development
-#     FOO: bar
-
-# version: "3"
-# services:
-#   postgres:
-#     image: postgres:latest
-#     volumes:
-#     - ./postgres-data:/var/lib/postgresql/data
-#   api:
-#     build:
-#       context: ./server
-#       dockerfile: Dockerfile
-#     ports:
-#       - "3002:3002"
-#     restart: on-failure
-#     container_name: api-posts
-#     volumes:
-#       - /app/node_modules
-#       - ./server:/app
-#     environment:
-#       - DB_USER=etlwymluppaatp
-#       - DB_PASS=347efbbe5f5b917ed93c310527e05ee48f5c2d43eb3d2e446768a484670025f6
-#       - DB_HOST=ec2-174-129-33-139.compute-1.amazonaws.com
-#       - DB_DATABASE=d4ajsmvsk5g6oi
-#       - DB_PORT=5432
