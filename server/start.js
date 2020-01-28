@@ -1,13 +1,5 @@
 require("@babel/register")({
-  presets: ["@babel/preset-env"],
-  entry: [
-    './server.js'
-  ],
-  output: {
-    path: __dirname,
-    publicPath: '/api',
-    filename: 'bundle.js'
-  }
+  presets: ["@babel/preset-env"]
 });
 
 module.exports = require("./server.js");
