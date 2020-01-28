@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { withNavigation } from 'react-navigation';
@@ -11,7 +10,14 @@ import { actions } from './store/actions';
 
 import { Header, Button, List, Spinner, Counter } from 'components';
 import { colors } from 'core/assets/styles';
-import { Container, Item, Actions, ContainerText, StyledText, ItemText } from './styled';
+import {
+  Container,
+  Item,
+  Actions,
+  ContainerText,
+  StyledText,
+  ItemText,
+} from './styled';
 
 const Posts = ({ navigation }) => {
   const [isRefresh, setIsRefresh] = useState(false);
@@ -42,7 +48,9 @@ const Posts = ({ navigation }) => {
 
   const renderItem = useCallback(item => (
     <Item isDark={isDark}>
-      <ItemText numberOfLines={1} isDark={isDark}>{item.post}</ItemText>
+      <ItemText numberOfLines={1} isDark={isDark}>
+        {item.post}
+      </ItemText>
       <Counter
         callBack={count => handleCounter(count, item)}
         initialValue={item.upvote}
@@ -56,7 +64,9 @@ const Posts = ({ navigation }) => {
       if (posts.length === 0) {
         return (
           <ContainerText>
-            <StyledText isDark={isDark}>Adicione um post para começar</StyledText>
+            <StyledText isDark={isDark}>
+              Adicione um post para começar
+            </StyledText>
           </ContainerText>
         );
       }
@@ -76,8 +86,13 @@ const Posts = ({ navigation }) => {
 
   return (
     <>
-      <Header title="Listar posts" home navigation={navigation} isDark={isDark} />
-      <Container isDark={isDark} >
+      <Header
+        title="Listar posts"
+        home
+        navigation={navigation}
+        isDark={isDark}
+      />
+      <Container isDark={isDark}>
         <Actions>
           <Button
             label="incluir post"

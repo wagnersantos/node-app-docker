@@ -10,6 +10,7 @@ export const types = {
   FETCH_POSTS: createAsyncTypes('posts', 'FETCH_POSTS'),
   SET_POST: createAsyncTypes('posts', 'SET_POST'),
   UPDATE_POST: createAsyncTypes('posts', 'UPDATE_POST'),
+  SEARCH_POSTS: createAsyncTypes('posts', 'SEARCH_POSTS'),
 };
 
 export const actions = {
@@ -17,4 +18,5 @@ export const actions = {
   fetchPosts: createAsyncActions(types.FETCH_POSTS),
   setPost: createAsyncActions(types.SET_POST),
   updatePost: createAsyncActions(types.UPDATE_POST),
+  searchPosts: createAsyncActions(types.SEARCH_POSTS),
 };

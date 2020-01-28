@@ -18,7 +18,6 @@ export function* loadPosts() {
   } catch (error) {
     const message = error.response?.data?.message;
     yield put(actions.fetchPosts.error(message));
-    console.tron.log('e ==>',error.toString());
   } finally {
     yield put(actions.updateLoaders({ postsList: false }));
   }
@@ -62,10 +61,27 @@ export function* updatePost({ payload }) {
   }
 }
 
+export function* searchPost({ payload }) {
+  try {
+    const response = yield call(Providers.service, {
+      path: `/${typePosts}/${payload}`,
+    });
+
+    yield put(actions.searchPosts.receive(response));
+  } catch (error) {
+    const message = error.response?.data?.message;
+    yield put(actions.search.error(message));
+    yield put(showSnackbar('Erro ao adicionar post'));
+  } finally {
+    yield put(actions.updateLoaders({ postsList: false }));
+  }
+}
+
 export default function* root() {
   yield all([
     takeLatest(types.FETCH_POSTS.REQUEST, loadPosts),
     takeLatest(types.SET_POST.REQUEST, setPost),
     takeLatest(types.UPDATE_POST.REQUEST, updatePost),
+    takeLatest(types.SEARCH_POSTS.REQUEST, searchPost),
   ]);
 }
