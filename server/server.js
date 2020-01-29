@@ -12,7 +12,7 @@ app.use(cors());
 
 requireDir("./src/models");
 
-app.use(express.static(__dirname + '/dist'));
+app.use("/api", routes);
 
 app.listen(process.env.PORT || 3002, () => {
   console.log(`Server listening`);
