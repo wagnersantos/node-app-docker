@@ -9,7 +9,8 @@ const production =
   "postgres://etlwymluppaatp:347efbbe5f5b917ed93c310527e05ee48f5c2d43eb3d2e446768a484670025f6@ec2-174-129-33-139.compute-1.amazonaws.com:5432";
 
 export const pool = new Pool({
-  connectionString: isProduction ? production : connectionString,
+  // connectionString: isProduction ? production : connectionString,
+  connectionString: production,
   ssl: isProduction
 });
 
