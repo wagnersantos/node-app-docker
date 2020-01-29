@@ -19,15 +19,18 @@ const Search = ({ navigation }) => {
   const posts = useSelector(state => selectors.getSearchPosts(state));
 
   const dispatch = useDispatch();
-  const searchPosts = value => dispatch(actions.searchPosts.request(value));
+  const searchPosts = debounce(
+    value => dispatch(actions.searchPosts.request(value)),
+    100,
+  );
 
-  const handleSearch = debounce(value => {
+  const handleSearch = value => {
     setText(value);
 
     if (value.length >= 3) {
       searchPosts(value);
     }
-  }, 100);
+  };
 
   const renderItem = useCallback(item => (
     <Item isDark={isDark}>
