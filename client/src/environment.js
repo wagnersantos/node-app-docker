@@ -6,4 +6,5 @@ export const isIos = Platform.OS === 'ios';
 
 export const base = isIos ? 'localhost' : IP;
 
-export const BASE_URL= `http://${base}:3002/api`
+// export const BASE_URL= `http://${base}:3002/api`
+export const BASE_URL = 'https://node-api-wss.herokuapp.com/api';
